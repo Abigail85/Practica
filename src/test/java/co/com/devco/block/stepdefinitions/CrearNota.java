@@ -11,11 +11,12 @@ import net.serenitybdd.screenplay.ensure.Ensure;
 
 
 import static co.com.devco.block.user_interface.InteractuarConNotasGuardadas.A_NOTA_GUARDADA;
+import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 
 
 public class CrearNota {
-    @Dado("que un usuario ingresa a la opcion {string}")
-    public void queUnUsuarioIngresaALaOpcion(String menu) {
+    @Dado("que un usuario se encuentra en un block de notas")
+    public void queUnUsuarioSeEncuentraEnUnBlockDeNotas() {
         OnStage.theActorCalled("usuario").attemptsTo(
                 IngresarAlBlock.deNotas()
         );
@@ -23,14 +24,14 @@ public class CrearNota {
     }
     @Cuando("crea una nueva {string}")
     public void creaUnaNueva(String menu) {
-        OnStage.theActorInTheSpotlight().attemptsTo(
+        theActorInTheSpotlight().attemptsTo(
                 EscribirNota.sinFormato(menu)
         );
     }
     @Entonces("puede ver que la nota se creo de manera exitosa")
     public void puedeVerQueLaNotaSeCreoDeManeraExitosa() {
-        OnStage.theActorInTheSpotlight().attemptsTo(
-                Ensure.that(A_NOTA_GUARDADA).text().isEqualTo("Mi primera nota")
+       OnStage.theActorInTheSpotlight().attemptsTo(
+                Ensure.that(A_NOTA_GUARDADA).text().isEqualTo("Mi nota sin formato")
         );
 
     }

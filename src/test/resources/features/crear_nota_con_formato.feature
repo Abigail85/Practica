@@ -2,8 +2,10 @@
   Característica: Crear Nota
     Yo como usuario quiero crear una nota
 
+Antecedentes:
+  Dado que un usuario se encuentra en un block de notas
+
   Escenario: Crear nota con Negrita
-    Dado que un usuario ingresa a "Nota de texto enriquecido"
-    Cuando crea la nota "Hola, sensei si lo pude hacer" en negrita
+    Cuando Crea una nueva nota en negrita en la opcion "Nota de texto enriquecido"
     Entonces debe ver como resultado su nota en negrita
 

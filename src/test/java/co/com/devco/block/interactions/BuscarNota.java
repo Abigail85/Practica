@@ -7,6 +7,7 @@ import net.serenitybdd.screenplay.Tasks;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
 import net.serenitybdd.screenplay.actions.Scroll;
+import net.thucydides.core.annotations.Step;
 
 import static co.com.devco.block.user_interface.InteractuarConNotasGuardadas.INPUT_BUSCAR_NOTA;
 
@@ -18,7 +19,7 @@ public class BuscarNota implements Interaction {
     public BuscarNota(Constantes constantes){
         this.constantes=constantes;
     }
-
+   @Step("Busca la nota, después de haberla guardado")
     @Override
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(Scroll.to(INPUT_BUSCAR_NOTA));

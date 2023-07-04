@@ -23,7 +23,7 @@ public class ListaDeTareasStepDefinitions {
     public void queUnIngresa(String menu){
         theActorCalled("usuario").attemptsTo(
                 IngresarAlBlock.deNotas(),
-                EscribirNota.listaDeTareas(menu)
+                EscribirNota.listaDeTareas()
 
         );
     }

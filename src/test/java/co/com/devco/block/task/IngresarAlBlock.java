@@ -12,8 +12,6 @@ public class IngresarAlBlock {
         return Task.where("{0} Ingresar al block de notas",
                 Open.url("https://www.online-notepad.net/es/bloc-de-notas-online")
 
-
-
                 );
 
     }
