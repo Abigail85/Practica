@@ -1,7 +1,10 @@
 package co.com.devco.block.stepdefinitions;
 
 
+import co.com.devco.block.task.EscribirNota;
+import co.com.devco.block.task.IngresarAlBlock;
 import co.com.devco.block.task.InteractuarConLasTareas;
+import co.com.devco.block.utils.Constantes;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.es.Cuando;
 import io.cucumber.java.es.Dado;
@@ -10,26 +13,36 @@ import io.cucumber.java.es.Y;
 import net.serenitybdd.screenplay.ensure.Ensure;
 
 import static co.com.devco.block.user_interface.ListaDeTareas.DIV_LISTA_DE_TAREAS;
+import static net.serenitybdd.screenplay.actors.OnStage.theActorCalled;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 
 
 public class ListaDeTareasStepDefinitions {
 
-    @Dado("crea una lista de  {int} tareas")
+    @Dado("un usuario se encuentra en el block de notas e ingresa a {string}")
+    public void queUnIngresa(String menu){
+        theActorCalled("usuario").attemptsTo(
+                IngresarAlBlock.deNotas(),
+                EscribirNota.listaDeTareas(menu)
+
+        );
+    }
+
+    @Y("crea una lista de  {int} tareas")
     public void creaUnaListaDe(int cantidadTareas, DataTable dataTable) {
         theActorInTheSpotlight().attemptsTo(
                 InteractuarConLasTareas.crear(dataTable,cantidadTareas)
         );
     }
 
-    @Y("un usuario mueve el elemento {int} de la lista donde de encuentra el elemento {int}")
+    @Cuando("un usuario mueve el elemento {int} de la lista donde de encuentra el elemento {int}")
     public void unUsuarioMueveElElementoDeLaLista(Integer elemento, Integer elementoDos) {
        theActorInTheSpotlight().attemptsTo(
                InteractuarConLasTareas.mover(elemento,elementoDos)
        );
     }
 
-    @Cuando("elimina el elemento {int} de la lista")
+    @Y("elimina el elemento {int} de la lista")
     public void eliminaElElementoDeLaLista(int elemento)  {
         theActorInTheSpotlight().attemptsTo(
                 InteractuarConLasTareas.eliminar(elemento)

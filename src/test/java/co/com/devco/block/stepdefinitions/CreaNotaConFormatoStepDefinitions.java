@@ -17,14 +17,14 @@ import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 public class CreaNotaConFormatoStepDefinitions {
 
     @Dado("que un {actor} ingresa a {string}")
-    public void queIngresaA(Actor actor,String menu) {
-       actor.attemptsTo(IngresarAlBlock.deNotas(menu));
+    public void queIngresaA(Actor actor) {
+       actor.attemptsTo(IngresarAlBlock.deNotas());
 
     }
-    @Cuando("crea la nota {string} en negrita")
-    public void creaLaNotaEnNegrita(String mensaje) {
+    @Cuando("ingresa a {string}, crea la nota {string} en negrita")
+    public void creaLaNotaEnNegrita(String mensaje, String menu) {
         theActorInTheSpotlight().attemptsTo(
-                EscribirNota.enNegrita(mensaje)
+                EscribirNota.enNegrita(mensaje,menu)
         );
 
     }
